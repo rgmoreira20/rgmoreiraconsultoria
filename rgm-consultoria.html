@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGM Consultoria Estratégica – Capital e Governança</title>
+<meta name="description" content="Pré-diagnóstico financeiro gratuito em 20 minutos para PMEs. Descubra por que seu fluxo de caixa não fecha e como resolver.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A2342;
+    --navy-light: #0d2d56;
+    --navy-dark: #061929;
+    --gold: #C6A43F;
+    --gold-light: #d4b35a;
+    --gold-dark: #a88830;
+    --gray-light: #F5F5F5;
+    --gray-mid: #e8e8e8;
+    --gray-text: #6b7280;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --shadow-sm: 0 2px 8px rgba(10,35,66,0.08);
+    --shadow-md: 0 8px 32px rgba(10,35,66,0.12);
+    --shadow-lg: 0 20px 60px rgba(10,35,66,0.18);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 40px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(198,164,63,0.4); }
+    70% { box-shadow: 0 0 0 16px rgba(198,164,63,0); }
+    100% { box-shadow: 0 0 0 0 rgba(198,164,63,0); }
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    from { width: 0; }
+    to { width: 60px; }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+
+  /* ─── UTILITIES ─── */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .section { padding: 88px 0; }
+  .section-alt { background: var(--gray-light); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--gray-text);
+    max-width: 580px;
+    line-height: 1.8;
+  }
+  .section-header { margin-bottom: 56px; }
+  .section-header.centered { text-align: center; }
+  .section-header.centered .section-subtitle { margin: 0 auto; }
+
+  .gold-line {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    animation: lineGrow 0.8s ease forwards;
+  }
+  .centered .gold-line { margin: 0 auto 20px; }
+
+  /* ─── BUTTONS ─── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    animation: pulse-ring 2.5s infinite;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(198,164,63,0.4);
+    animation: none;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 36px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  /* ─── HEADER / NAV ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,35,66,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(198,164,63,0.15);
+    transition: all 0.3s ease;
+  }
+  header.scrolled {
+    background: rgba(6,25,41,0.99);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+
+  /* LOGO */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-icon { flex-shrink: 0; }
+  .logo-text-group { line-height: 1.2; }
+  .logo-main {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.3px;
+    display: block;
+  }
+  .logo-sub {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #0f3060 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 76px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(198,164,63,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(198,164,63,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Geometric decorative lines */
+  .hero-geo {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .hero-geo svg { width: 100%; height: 100%; }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(198,164,63,0.12);
+    border: 1px solid rgba(198,164,63,0.3);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: fadeIn 0.8s ease 0.2s both;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero h1 span {
+    color: var(--gold);
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+
+  .hero-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeUp 0.8s ease 0.7s both;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(198,164,63,0.2);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.9s ease 0.5s both;
+  }
+  .hero-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-stat:last-of-type { border-bottom: none; }
+  .hero-stat-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(198,164,63,0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .hero-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .pain-card {
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    cursor: default;
+  }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.35s ease;
+    transform-origin: left;
+  }
+  .pain-card:hover {
+    border-color: rgba(198,164,63,0.4);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  .pain-card:hover::before { transform: scaleX(1); }
+
+  .pain-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(10,35,66,0.06);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 20px;
+    transition: all 0.35s ease;
+  }
+  .pain-card:hover .pain-icon {
+    background: var(--navy);
+    color: var(--gold);
+  }
+  .pain-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .pain-card p {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.75;
+  }
+
+  /* ─── DIFFERENTIALS ─── */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+  .diff-card {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .diff-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: rgba(198,164,63,0.06);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .diff-card:hover { transform: translateY(-6px); }
+  .diff-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .diff-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .diff-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, #fffdf5 0%, #fffbea 100%);
+  }
+  .service-card.featured::before {
+    content: 'GRATUITO';
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    letter-spacing: 1.5px;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: rgba(10,35,66,0.2);
+  }
+  .service-card.featured:hover { border-color: var(--gold-dark); }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 18px;
+    background: rgba(10,35,66,0.06);
+    color: var(--navy);
+    transition: all 0.3s ease;
+  }
+  .service-card.featured .service-icon { background: rgba(198,164,63,0.15); color: var(--gold-dark); }
+  .service-card:hover .service-icon { background: var(--navy); color: var(--gold); }
+  .service-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.75;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-avatar {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border: 1px solid rgba(198,164,63,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-avatar::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(198,164,63,0.1) 0%, transparent 70%);
+  }
+  .avatar-initials {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(198,164,63,0.15);
+    border: 2px solid rgba(198,164,63,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+  .avatar-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+  .avatar-title {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .about-badge-num {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+  .about-badge-label {
+    font-size: 11px;
+    font-weight: 700;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .about-content .section-title { margin-bottom: 20px; }
+  .about-list { list-style: none; margin: 28px 0 36px; }
+  .about-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-mid);
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.65;
+  }
+  .about-list li:last-child { border-bottom: none; }
+  .about-list i { color: var(--gold); margin-top: 3px; flex-shrink: 0; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  .quote-icon {
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+    opacity: 0.4;
+  }
+  .testimonial-text {
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .author-role {
+    font-size: 12px;
+    color: var(--gray-text);
+    margin-top: 2px;
+  }
+  .stars { color: var(--gold); font-size: 13px; margin-bottom: 12px; letter-spacing: 2px; }
+
+  /* ─── STATS ─── */
+  .stats-section {
+    background: var(--navy);
+    padding: 80px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 48px;
+    text-align: center;
+  }
+  .stat-item { position: relative; }
+  .stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60px;
+    background: rgba(198,164,63,0.2);
+  }
+  .stat-num {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+  }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: linear-gradient(135deg, #0f1f3a 0%, var(--navy) 100%);
+    border-radius: var(--radius-lg);
+    padding: 60px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(198,164,63,0.15);
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(198,164,63,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-banner h2 {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cta-banner p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 18px;
+  }
+
+  /* ─── FORM ─── */
+  .form-section { background: var(--gray-light); }
+  .form-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 48px 48px;
+    border: 1px solid var(--gray-mid);
+    box-shadow: var(--shadow-sm);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  input, textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--gray-light);
+    border: 1.5px solid var(--gray-mid);
+    border-radius: 10px;
+    padding: 13px 16px;
+    outline: none;
+    transition: all 0.25s;
+    width: 100%;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--navy);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(10,35,66,0.08);
+  }
+  textarea { resize: vertical; min-height: 120px; }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--gray-text);
+    margin-top: 6px;
+  }
+  .form-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .btn-submit {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 48px;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-submit:hover {
+    background: var(--navy-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(10,35,66,0.25);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy-dark);
+    padding: 48px 0;
+    border-top: 1px solid rgba(198,164,63,0.15);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-logo .logo-main { font-size: 15px; }
+  .footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-contact:hover { color: var(--gold); }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--navy-dark);
+    border-top: 1px solid rgba(198,164,63,0.15);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); padding-left: 32px; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-card { display: none; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-visual { max-width: 320px; margin: 0 auto; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-wrapper { padding: 36px 28px; }
+    .cta-banner { padding: 44px 28px; }
+    .stat-item + .stat-item::before { display: none; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .section { padding: 64px 0; }
+    .hero { padding-top: 76px; }
+    .hero h1 { font-size: 30px; }
+    .diff-num { font-size: 38px; }
+  }
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    .services-grid { grid-template-columns: 1fr; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header id="header">
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">
+        <!-- SVG LOGO INLINE -->
+        <svg class="logo-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shield base -->
+          <path d="M22 3L5 10V22C5 31.4 12.5 40.1 22 42C31.5 40.1 39 31.4 39 22V10L22 3Z" fill="#0A2342"/>
+          <path d="M22 3L5 10V22C5 31.4 12.5 40.1 22 42C31.5 40.1 39 31.4 39 22V10L22 3Z" stroke="#C6A43F" stroke-width="1.5"/>
+          <!-- Growth arrow/chart bars -->
+          <rect x="12" y="26" width="4" height="8" rx="1" fill="#C6A43F" opacity="0.7"/>
+          <rect x="18" y="21" width="4" height="13" rx="1" fill="#C6A43F" opacity="0.85"/>
+          <rect x="24" y="16" width="4" height="18" rx="1" fill="#C6A43F"/>
+          <!-- Arrow tip -->
+          <path d="M28 13L32 9M32 9H28M32 9V13" stroke="#C6A43F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-main">RGM Consultoria Estratégica</span>
+          <span class="logo-sub">Capital &amp; Governança</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#dores">Desafios</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Especialista</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="SEU_LINK_CALENDLY" target="_blank" rel="noopener" class="nav-cta">Agendar agora</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#dores">Desafios</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Especialista</a>
+    <a href="#contato">Contato</a>
+    <a href="SEU_LINK_CALENDLY" target="_blank" rel="noopener" style="color: #C6A43F;">Agendar pré-diagnóstico gratuito</a>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-geo" aria-hidden="true">
+    <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <line x1="200" y1="0" x2="600" y2="800" stroke="rgba(198,164,63,0.04)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="800" y2="800" stroke="rgba(198,164,63,0.04)" stroke-width="1"/>
+      <line x1="800" y1="0" x2="1200" y2="800" stroke="rgba(198,164,63,0.03)" stroke-width="1"/>
+      <line x1="1000" y1="0" x2="1400" y2="800" stroke="rgba(198,164,63,0.03)" stroke-width="1"/>
+      <circle cx="1200" cy="150" r="180" stroke="rgba(198,164,63,0.05)" stroke-width="1" fill="none"/>
+      <circle cx="1200" cy="150" r="120" stroke="rgba(198,164,63,0.04)" stroke-width="1" fill="none"/>
+      <circle cx="1200" cy="150" r="60" stroke="rgba(198,164,63,0.05)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-shield-check"></i>
+          Diagnóstico 100% gratuito &bull; Sem compromisso
+        </div>
+        <h1>Pré-diagnóstico<br><span>financeiro gratuito</span><br>em 20 minutos</h1>
+        <p class="hero-sub">Descubra por que seu fluxo de caixa não fecha, seu crédito é caro e sua gestão financeira trava. Uma conversa estruturada com quem realmente entende de PMEs.</p>
+        <div class="hero-actions">
+          <a href="SEU_LINK_CALENDLY" target="_blank" rel="noopener" class="btn-primary">
+            <i class="fas fa-calendar-check"></i>
+            Agendar pré-diagnóstico grátis
+          </a>
+        </div>
+        <p class="hero-note">
+          <i class="fas fa-lock" style="font-size:11px;"></i>
+          Sem spam. Sem vendas por pressão. Apenas clareza financeira.
+        </p>
+      </div>
+
+      <div class="hero-card" aria-hidden="true">
+        <p class="hero-card-title"><i class="fas fa-chart-line" style="margin-right:8px;"></i>Resultados comprovados</p>
+        <div class="hero-stat">
+          <div class="hero-stat-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="hero-stat-num">+25 anos</div>
+            <div class="hero-stat-label">de experiência em empresas reguladas</div>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-icon"><i class="fas fa-coins"></i></div>
+          <div>
+            <div class="hero-stat-num">R$ 200 MM+</div>
+            <div class="hero-stat-label">em funding estruturado (FIDC, CRI, CRA)</div>
+          </div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <div class="hero-stat-num">+100</div>
+            <div class="hero-stat-label">empresas assessoradas em crédito e governança</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PAIN POINTS ══════════ -->
+<section class="section" id="dores">
+  <div class="container">
+    <div class="section-header centered animate-on-scroll">
+      <p class="section-label">Identificamos o problema</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Você se identifica com isso?</h2>
+      <p class="section-subtitle">Esses são os desafios mais comuns que encontramos nas PMEs brasileiras — e que sabemos resolver.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card animate-on-scroll delay-1">
+        <div class="pain-icon"><i class="fas fa-water"></i></div>
+        <h3>Fluxo de caixa descontrolado</h3>
+        <p>Você sabe quanto entra e sai, mas não consegue prever nem planejar. O mês termina com surpresas que travam o crescimento.</p>
+      </div>
+      <div class="pain-card animate-on-scroll delay-2">
+        <div class="pain-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <h3>Crédito caro ou inacessível</h3>
+        <p>Seu negócio paga juros altos porque os bancos não enxergam sua real capacidade de pagamento. A falta de governança fecha as portas de crédito mais baratas.</p>
+      </div>
+      <div class="pain-card animate-on-scroll delay-3">
+        <div class="pain-icon"><i class="fas fa-random"></i></div>
+        <h3>Falta de governança financeira</h3>
+        <p>Decisões no "achômetro", sem indicadores, sem planejamento. Sem uma estrutura sólida, cada crise parece maior do que é.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DIFFERENTIALS ══════════ -->
+<section class="section section-alt" id="diferenciais">
+  <div class="container">
+    <div class="section-header centered animate-on-scroll">
+      <p class="section-label">Por que a RGM</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Diferenciais que entregam resultado</h2>
+      <p class="section-subtitle">Não é teoria. É experiência real, com resultados mensuráveis.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card animate-on-scroll delay-1">
+        <span class="diff-num">25+</span>
+        <h3>Anos à frente de empresas reguladas</h3>
+        <p>Gestão de securitizadora e head de funding em operações de alta complexidade. Experiência que poucos consultores têm no mercado.</p>
+      </div>
+      <div class="diff-card animate-on-scroll delay-2">
+        <span class="diff-num">R$ 200MM</span>
+        <h3>Em funding estruturado</h3>
+        <p>FIDC, CRA, CRI e desconto de direitos creditórios. Sabemos como as grandes estruturas funcionam — e como adaptá-las para PMEs.</p>
+      </div>
+      <div class="diff-card animate-on-scroll delay-3">
+        <span class="diff-num">100%</span>
+        <h3>Soluções sob medida</h3>
+        <p>Nenhuma empresa é igual. Cada diagnóstico gera um plano de ação personalizado, com prioridades claras e implementação acompanhada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section class="section" id="servicos">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">O que oferecemos</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Soluções para cada fase<br>do seu negócio</h2>
+      <p class="section-subtitle">Do primeiro diagnóstico à reestruturação financeira completa, atuamos em toda a jornada da sua empresa.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card featured animate-on-scroll delay-1">
+        <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+        <h3>Pré-diagnóstico gratuito (20min)</h3>
+        <p>Uma conversa estruturada para entender rapidamente a situação do seu negócio e identificar os maiores gargalos financeiros. Sem custo, sem compromisso.</p>
+      </div>
+      <div class="service-card animate-on-scroll delay-2">
+        <div class="service-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Diagnóstico aprofundado</h3>
+        <p>Análise detalhada de fluxo de caixa, DRE e endividamento. Entregamos 3 ações prioritárias com cronograma de implementação.</p>
+      </div>
+      <div class="service-card animate-on-scroll delay-3">
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>BPO Financeiro</h3>
+        <p>Terceirização completa da gestão financeira: conciliação, contas a pagar e receber, fluxo de caixa e relatórios gerenciais mensais.</p>
+      </div>
+      <div class="service-card animate-on-scroll delay-1">
+        <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>Consultoria recorrente</h3>
+        <p>Acompanhamento mensal para estabilizar o caixa, reduzir custo de capital e implantar governança financeira de forma progressiva.</p>
+      </div>
+      <div class="service-card animate-on-scroll delay-2">
+        <div class="service-icon"><i class="fas fa-university"></i></div>
+        <h3>Estruturação de funding</h3>
+        <p>FIDC, CRA, CRI, crédito bancário. Atuamos no modelo de sucesso compartilhado — nosso resultado depende do seu.</p>
+      </div>
+      <div class="service-card animate-on-scroll delay-3">
+        <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Controle de fluxo + DRE</h3>
+        <p>Implantação de indicadores financeiros e planejamento baseado em dados reais para decisões mais seguras e previsíveis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="section section-alt" id="sobre">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual animate-on-scroll">
+        <div class="about-avatar">
+          <div class="avatar-initials">RM</div>
+          <div class="avatar-name">Rafael Moreira</div>
+          <div class="avatar-title">CFO as a Service &bull; Fundador RGM</div>
+        </div>
+        <div class="about-badge">
+          <span class="about-badge-num">R$200MM+</span>
+          <span class="about-badge-label">Funding estruturado</span>
+        </div>
+      </div>
+      <div class="about-content animate-on-scroll delay-2">
+        <p class="section-label">Quem está à sua frente</p>
+        <div class="gold-line"></div>
+        <h2 class="section-title">Rafael Moreira<br>Especialista em Capital e Governança</h2>
+        <p class="section-subtitle">Mais de 25 anos transformando desafios financeiros em soluções concretas de liquidez, governança e acesso a crédito para empresas brasileiras.</p>
+        <ul class="about-list">
+          <li>
+            <i class="fas fa-check-circle"></i>
+            Mais de 25 anos à frente de empresas reguladas — securitizadoras, funding e crédito estruturado.
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            Atuação comprovada em conselhos consultivos e como CFO as a Service para PMEs de diferentes setores.
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            Responsável por operações de crédito e funding que somam mais de R$ 200 milhões — FIDC, CRI, CRA e crédito bancário.
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            Especialista em transformar complexidade financeira em clareza e ação imediata para o empresário.
+          </li>
+        </ul>
+        <a href="SEU_LINK_CALENDLY" target="_blank" rel="noopener" class="btn-primary" style="animation: none;">
+          <i class="fas fa-calendar-check"></i>
+          Conversar com Rafael
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-header centered animate-on-scroll">
+      <p class="section-label">O que dizem nossos clientes</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Resultados reais,<br>empresas reais</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll delay-1">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">Em 60 dias, tivemos clareza total sobre nosso fluxo de caixa e conseguimos reduzir o custo do nosso crédito de rotativo para uma linha mais inteligente. O pré-diagnóstico foi o divisor de águas.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">M. Rodrigues</div>
+            <div class="author-role">Sócio-fundador · Empresa de Logística</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-on-scroll delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">Nunca imaginei que 20 minutos de conversa poderiam revelar tantos pontos cegos no meu negócio. O diagnóstico foi preciso, e o plano de ação, factível. Recomendo sem hesitar.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CA</div>
+          <div>
+            <div class="author-name">C. Albuquerque</div>
+            <div class="author-role">CEO · Indústria de Alimentos</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card animate-on-scroll delay-3">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p class="testimonial-text">Após estruturar nosso fluxo de caixa com a RGM, finalmente conseguimos aprovação em uma linha de crédito melhor. A governança implantada nos deu credibilidade que não tínhamos antes.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div>
+            <div class="author-name">P. Santana</div>
+            <div class="author-role">Diretor Financeiro · Construtora Regional</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:12px;color:#9ca3af;">* Depoimentos sugestivos — substitua com os reais antes de publicar.</p>
+  </div>
+</section>
+
+<!-- ══════════ STATS ══════════ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item animate-on-scroll delay-1">
+        <span class="stat-num" data-target="25">0</span>
+        <span class="stat-label">+25 anos de experiência</span>
+      </div>
+      <div class="stat-item animate-on-scroll delay-2">
+        <span class="stat-num">R$ 200MM+</span>
+        <span class="stat-label">em funding estruturado</span>
+      </div>
+      <div class="stat-item animate-on-scroll delay-3">
+        <span class="stat-num" data-target="100">0</span>
+        <span class="stat-label">+100 empresas assessoradas</span>
+      </div>
+      <div class="stat-item animate-on-scroll delay-4">
+        <span class="stat-num">20min</span>
+        <span class="stat-label">para o pré-diagnóstico gratuito</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SECOND CTA ══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner animate-on-scroll">
+      <p class="section-label" style="justify-content:center;">Próximo passo</p>
+      <h2>Pronto para entender<br>o que trava seu negócio?</h2>
+      <p>Agende agora seu pré-diagnóstico financeiro gratuito de 20 minutos.<br>Sem custo, sem compromisso — apenas clareza financeira real.</p>
+      <a href="SEU_LINK_CALENDLY" target="_blank" rel="noopener" class="btn-primary" style="animation:none;">
+        <i class="fas fa-calendar-check"></i>
+        Agendar pré-diagnóstico gratuito
+      </a>
+      <p class="cta-note"><i class="fas fa-lock" style="margin-right:6px; font-size:10px;"></i>Seus dados são sigilosos. Política de privacidade aplicada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT FORM ══════════ -->
+<section class="section form-section" id="contato">
+  <div class="container">
+    <div class="section-header centered animate-on-scroll">
+      <p class="section-label">Fale conosco</p>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Prefere enviar uma mensagem?</h2>
+      <p class="section-subtitle">Preencha o formulário e entraremos em contato em até 24 horas úteis.</p>
+    </div>
+    <!--
+      INSTRUÇÃO TÉCNICA: Substitua action="#0" pelo endpoint do Formspree:
+      1. Crie conta em https://formspree.io/
+      2. Crie um novo formulário configurado para contato@RGMoreiraConsultoria.com.br
+      3. Substitua action="#0" por action="https://formspree.io/f/SEU_CODIGO"
+      4. Remova o atributo onsubmit e adicione method="POST"
+    -->
+    <form action="#0" method="POST" onsubmit="handleFormSubmit(event)" class="form-wrapper animate-on-scroll delay-1">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com.br" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone / WhatsApp *</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mensagem">Qual é o seu principal desafio financeiro hoje?</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente a situação da sua empresa..."></textarea>
+      </div>
+      <p class="form-note" style="margin-bottom:20px;">
+        <i class="fas fa-lock" style="color:#C6A43F; margin-right:6px;"></i>
+        Suas informações são sigilosas e utilizadas exclusivamente para entrar em contato com você.
+      </p>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i>
+          Enviar mensagem
+        </button>
+      </div>
+      <div id="form-success" style="display:none; text-align:center; margin-top:20px; color:#059669; font-weight:600; font-size:15px;">
+        <i class="fas fa-check-circle" style="margin-right:8px;"></i>Mensagem enviada! Retornaremos em breve.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#inicio" class="logo footer-logo">
+        <svg width="36" height="36" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 3L5 10V22C5 31.4 12.5 40.1 22 42C31.5 40.1 39 31.4 39 22V10L22 3Z" fill="#0A2342" stroke="#C6A43F" stroke-width="1.5"/>
+          <rect x="12" y="26" width="4" height="8" rx="1" fill="#C6A43F" opacity="0.7"/>
+          <rect x="18" y="21" width="4" height="13" rx="1" fill="#C6A43F" opacity="0.85"/>
+          <rect x="24" y="16" width="4" height="18" rx="1" fill="#C6A43F"/>
+          <path d="M28 13L32 9M32 9H28M32 9V13" stroke="#C6A43F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-main">RGM Consultoria Estratégica</span>
+          <span class="logo-sub">Capital &amp; Governança</span>
+        </div>
+      </a>
+      <a href="mailto:contato@RGMoreiraConsultoria.com.br" class="footer-contact">
+        <i class="fas fa-envelope"></i>
+        contato@RGMoreiraConsultoria.com.br
+      </a>
+      <div class="footer-links">
+        <a href="#">Política de privacidade</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 RGM Consultoria Estratégica – Capital e Governança · RGMoreiraConsultoria.com.br · Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  hamburger.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // ── Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  // ── Form submit placeholder
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    // Após configurar Formspree, remova este handler e o atributo onsubmit
+    // O formulário será enviado naturalmente para contato@RGMoreiraConsultoria.com.br
+    document.getElementById('form-success').style.display = 'block';
+    e.target.querySelector('button[type="submit"]').disabled = true;
+  }
+
+  // ── Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#' || id === '#0') return;
+      e.preventDefault();
+      const el = document.querySelector(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
