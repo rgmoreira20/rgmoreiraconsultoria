@@ -27,6 +27,7 @@
 
 <!-- SCHEMA.ORG – Dados Estruturados -->
 <script type="application/ld+json">
+
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -57,11 +58,10 @@
     "priceCurrency": "BRL"
   }
 }
-<\/script>
 
-<!-- SCHEMA.ORG – FAQ (rich snippet no Google) -->
 </script>
 
+<!-- SCHEMA.ORG FAQ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -101,7 +101,7 @@
     }
   ]
 }
-<\/script>
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1543,27 +1543,32 @@
     <p class="footer-copy">© 2025 RGM Consultoria Estratégica – Capital e Governança · RGMoreiraConsultoria.com.br · Todos os direitos reservados.</p>
   </div>
 </footer>
-</script>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+
   // ── Header scroll effect
   const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
 
   // ── Mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  hamburger.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') mobileMenu.classList.toggle('open');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
 
   // ── Scroll animations
   const observer = new IntersectionObserver((entries) => {
@@ -1586,6 +1591,8 @@
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  }); // fim DOMContentLoaded
 </script>
 </body>
 </html>
