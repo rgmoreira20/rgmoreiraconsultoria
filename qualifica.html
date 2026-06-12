@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antes de agendar — RGM Consultoria</title>
+<meta name="description" content="Pré-qualificação para reunião com a RGM Consultoria — CFO as a Service para PMEs.">
+<style>
+  :root {
+    --primary: #0a2540;
+    --primary-light: #1d3a5f;
+    --accent: #c9a961;
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #1a2332;
+    --text-soft: #5a6478;
+    --border: #e3e6ed;
+    --error: #c0392b;
+    --success: #1e7e34;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.55;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 20px 60px; width: 100%; }
+  header { text-align: center; margin-bottom: 28px; }
+  .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.5px; color: var(--primary); margin-bottom: 6px; }
+  .logo span { color: var(--accent); }
+  h1 { font-size: clamp(22px, 5vw, 28px); font-weight: 700; color: var(--primary); margin-bottom: 12px; line-height: 1.25; }
+  .intro { color: var(--text-soft); font-size: 15px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 24px; }
+  .intro strong { color: var(--text); }
+  form { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04); }
+  .field { margin-bottom: 22px; }
+  label { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  label .req { color: var(--error); }
+  input[type="text"], input[type="tel"], input[type="email"], select { width: 100%; padding: 12px 14px; font-size: 15px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font-family: inherit; transition: border-color 0.15s; -webkit-appearance: none; appearance: none; }
+  input:focus, select:focus { outline: none; border-color: var(--primary); }
+  select { background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%3E%3Cpath%20fill%3D%22%23495057%22%20d%3D%22M6%208L0%200h12z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .hint { font-size: 13px; color: var(--text-soft); margin-top: 6px; }
+  button[type="submit"] { width: 100%; padding: 15px 20px; font-size: 16px; font-weight: 600; background: var(--primary); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: background 0.15s; font-family: inherit; }
+  button[type="submit"]:hover { background: var(--primary-light); }
+  button[type="submit"]:disabled { background: #aab2c1; cursor: not-allowed; }
+  .privacy { text-align: center; font-size: 12px; color: var(--text-soft); margin-top: 16px; }
+  .result { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 36px 28px; text-align: center; box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04); }
+  .result h2 { font-size: 22px; color: var(--primary); margin-bottom: 14px; }
+  .result p { color: var(--text-soft); margin-bottom: 22px; font-size: 15px; }
+  .result a.cta { display: inline-block; padding: 14px 28px; background: var(--primary); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .result a.cta:hover { background: var(--primary-light); }
+  .hidden { display: none; }
+  footer { text-align: center; padding: 24px; color: var(--text-soft); font-size: 12px; margin-top: auto; }
+  footer a { color: var(--text-soft); text-decoration: none; }
+  @media (max-width: 480px) { form { padding: 22px 18px; } .intro { padding: 14px 16px; font-size: 14px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="logo">RGM<span>.</span> Consultoria</div></header>
+  <div id="form-screen">
+    <h1>Antes de agendarmos a conversa</h1>
+    <div class="intro">Trabalhamos com PMEs que faturam entre <strong>R$ 1M e R$ 10M/ano</strong> em três frentes: <strong>BPO Financeiro</strong>, <strong>governança financeira</strong> e <strong>estrutura de capital</strong>. Preciso entender rapidamente seu contexto para que a reunião seja útil dos dois lados. Leva 40 segundos.</div>
+    <form id="qualifica-form" novalidate>
+      <div class="field"><label for="empresa">Nome da empresa <span class="req">*</span></label><input type="text" id="empresa" name="empresa" required autocomplete="organization"></div>
+      <div class="field"><label for="nome">Seu nome <span class="req">*</span></label><input type="text" id="nome" name="nome" required autocomplete="name"></div>
+      <div class="field"><label for="cargo">Seu cargo na empresa <span class="req">*</span></label><select id="cargo" name="cargo" required><option value="">Selecione...</option><option value="socio">Sócio / Fundador</option><option value="diretor">Diretor</option><option value="cfo">CFO / Diretor Financeiro</option><option value="gerente">Gerente Financeiro / Controller</option><option value="contador">Contador / Consultor externo</option><option value="outro">Outro</option></select></div>
+      <div class="field"><label for="faturamento">Faturamento anual aproximado <span class="req">*</span></label><select id="faturamento" name="faturamento" required><option value="">Selecione...</option><option value="lt_1m">Menos de R$ 1 milhão</option><option value="1_3m">R$ 1M a R$ 3M</option><option value="3_6m">R$ 3M a R$ 6M</option><option value="6_10m">R$ 6M a R$ 10M</option><option value="gt_10m">Mais de R$ 10M</option></select></div>
+      <div class="field"><label for="dor">O que mais pesa hoje na sua operação financeira? <span class="req">*</span></label><select id="dor" name="dor" required><option value="">Selecione...</option><option value="bpo">Sobrecarga no contas a pagar / receber (BPO)</option><option value="governanca">Falta de relatórios e visão financeira clara (Governança)</option><option value="capital">Precisamos de capital para crescer ou capital de giro</option><option value="estrutura">Estruturar área financeira / processos</option><option value="multi">Mais de uma das acima</option><option value="explorar">Quero explorar antes de definir</option></select></div>
+      <div class="field"><label for="whatsapp">WhatsApp para contato <span class="req">*</span></label><input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel"><div class="hint">Usamos como fallback caso o agendamento não seja concluído.</div></div>
+      <div class="field"><label for="email">E-mail <span class="req">*</span></label><input type="email" id="email" name="email" required autocomplete="email"></div>
+      <button type="submit" id="submit-btn">Continuar para agendamento</button>
+      <div class="privacy">Seus dados são confidenciais e usados apenas para esta avaliação.</div>
+    </form>
+  </div>
+  <div id="success-qualified" class="result hidden">
+    <h2>Perfeito, vamos conversar.</h2>
+    <p>Pelo que você descreveu, faz sentido marcarmos uma conversa de 30 minutos. Vou abrir o calendário para você escolher o melhor horário.</p>
+    <a href="https://calendly.com/rafael-moreira-rgmoreiraconsultoria/30min" class="cta" id="calendly-link">Escolher horário no calendário</a>
+  </div>
+  <div id="success-nurture" class="result hidden">
+    <h2>Obrigado pelas informações.</h2>
+    <p>Recebemos seu cadastro. Hoje nosso trabalho é mais aderente a empresas com faturamento entre R$ 1M e R$ 10M/ano com tomadores de decisão envolvidos no processo. Vou guardar seu contato e, se surgir uma fit melhor mais adiante, retomamos.</p>
+    <p style="font-size: 14px;">Se entender que faz sentido conversar mesmo assim, me chame no WhatsApp: <strong>(13) 99679-5045</strong>.</p>
+  </div>
+  <div id="error-screen" class="result hidden">
+    <h2>Tivemos um problema.</h2>
+    <p>Não conseguimos registrar agora. Tente novamente em alguns minutos ou me chame direto no WhatsApp: <strong>(13) 99679-5045</strong>.</p>
+    <a href="javascript:location.reload()" class="cta">Tentar de novo</a>
+  </div>
+</div>
+<footer>RGM Consultoria · CFO as a Service · <a href="https://rgmoreiraconsultoria.com.br">rgmoreiraconsultoria.com.br</a></footer>
+<script>
+const WEBHOOK_URL = 'https://rgmoreiraconsultoria.app.n8n.cloud/webhook/qualifica';
+const waInput = document.getElementById('whatsapp');
+waInput.addEventListener('input', e => {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+  else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5}).*/, '($1) $2');
+  else if (v.length > 0) v = v.replace(/(\d{0,2})/, '($1');
+  e.target.value = v;
+});
+document.getElementById('qualifica-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  const fd = new FormData(e.target);
+  const data = Object.fromEntries(fd.entries());
+  data.whatsapp_limpo = data.whatsapp.replace(/\D/g, '');
+  data.timestamp = new Date().toISOString();
+  data.url = window.location.href;
+  data.referrer = document.referrer || '';
+  const cargoDecisor = ['socio', 'diretor', 'cfo'].includes(data.cargo);
+  const faturamentoIcp = ['1_3m', '3_6m', '6_10m'].includes(data.faturamento);
+  const qualificado = cargoDecisor && faturamentoIcp;
+  data.qualificado = qualificado;
+  try {
+    await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), mode: 'cors' });
+    document.getElementById('form-screen').classList.add('hidden');
+    if (qualificado) {
+      document.getElementById('success-qualified').classList.remove('hidden');
+      const cal = document.getElementById('calendly-link');
+      const params = new URLSearchParams({ name: data.nome, email: data.email, a1: data.empresa });
+      cal.href = cal.href + '?' + params.toString();
+    } else {
+      document.getElementById('success-nurture').classList.remove('hidden');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    document.getElementById('form-screen').classList.add('hidden');
+    document.getElementById('error-screen').classList.remove('hidden');
+  }
+});
+</script>
+</body>
+</html>
