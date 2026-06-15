@@ -2,6 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZZQV6BRBW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-GZZQV6BRBW');
+gtag('config', 'GT-T94D979P');
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antes de agendar — RGM Consultoria</title>
 <meta name="description" content="Pré-qualificação para reunião com a RGM Consultoria — CFO as a Service para PMEs.">
@@ -114,6 +124,18 @@ document.getElementById('qualifica-form').addEventListener('submit', async (e) =
   const qualificado = cargoDecisor && faturamentoIcp;
   data.qualificado = qualificado;
   try {
+    // Conversion event GA4
+    if(typeof gtag !== 'undefined'){
+      gtag('event', 'generate_lead', {
+        'value': qualificado ? 100 : 0,
+        'currency': 'BRL',
+        'lead_status': qualificado ? 'qualificado' : 'frio',
+        'cargo': data.cargo,
+        'faturamento': data.faturamento,
+        'dor': data.dor
+      });
+    }
+    
     await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), mode: 'cors' });
     document.getElementById('form-screen').classList.add('hidden');
     if (qualificado) {
