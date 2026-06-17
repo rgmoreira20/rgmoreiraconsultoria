@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://rgmoreiraconsultoria.com.br/</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/pre-diagnostico.html</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/qualifica.html</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/blog/</loc><lastmod>2026-06-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/blog/quanto-custa-cfo-terceirizado.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/blog/bpo-financeiro-o-que-e.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/blog/cfo-terceirizado-vs-clt.html</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://rgmoreiraconsultoria.com.br/blog/estruturar-area-financeira-pme.html</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/pre-diagnostico.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/qualifica.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/solucoes/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/solucoes/reduzir-juros-bancarios.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/solucoes/organizar-fluxo-de-caixa.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/solucoes/profissionalizar-financeiro-pme.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/solucoes/sair-do-vermelho.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/ferramentas/diagnostico-financeiro.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/blog/quanto-custa-cfo-terceirizado.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/blog/bpo-financeiro-o-que-e.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/blog/cfo-terceirizado-vs-clt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rgmoreiraconsultoria.com.br/blog/estruturar-area-financeira-pme.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
