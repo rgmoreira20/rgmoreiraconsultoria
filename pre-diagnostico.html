@@ -14,7 +14,7 @@
 <meta property="og:description" content="30 minutos. Sem custo. 3 dores financeiras identificadas e plano de ação imediato.">
 <meta property="og:type" content="website">
 <style>
-:root{--primary:#0a2540;--primary-light:#1d3a5f;--accent:#c9a961;--bg:#f7f8fa;--surface:#fff;--text:#1a2332;--text-soft:#5a6478;--border:#e3e6ed;--success:#1e7e34;--alert:#d97706;--urgent:#dc2626}
+:root{--primary:#0a2540;--primary-light:#1d3a5f;--accent:#c9a961;--accent-dark:#a88a4d;--bg:#f7f8fa;--surface:#fff;--text:#1a2332;--text-soft:#5a6478;--border:#e3e6ed;--success:#1e7e34;--alert:#d97706;--urgent:#dc2626;--wa:#25D366;--wa-dark:#1ebe57}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 .nav{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 0}
@@ -22,6 +22,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .logo{font-weight:700;font-size:18px;color:var(--primary);text-decoration:none}
 .logo span{color:var(--accent)}
 .trust{font-size:13px;color:var(--text-soft)}
+.trust strong{color:var(--success)}
 .urgency-banner{background:var(--urgent);color:#fff;text-align:center;padding:8px 14px;font-size:14px;font-weight:500}
 .urgency-banner strong{font-weight:700}
 .hero{background:linear-gradient(135deg,#0a2540 0%,#1d3a5f 100%);color:#fff;padding:50px 24px 60px;text-align:center}
@@ -30,10 +31,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .hero h1{font-size:clamp(28px,4.5vw,40px);font-weight:700;line-height:1.2;margin-bottom:20px}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero .sub{font-size:18px;color:#d4dae3;margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto}
-.hero .cta-btn{display:inline-block;background:var(--accent);color:var(--primary);padding:18px 36px;border-radius:8px;text-decoration:none;font-weight:700;font-size:17px;margin-top:8px;box-shadow:0 4px 16px rgba(201,169,97,.3)}
-.hero .cta-btn:hover{background:#daba6f}
-.hero .small-note{font-size:13px;color:#9ba5b5;margin-top:14px}
-.hero .badges{display:flex;justify-content:center;gap:24px;margin-top:32px;flex-wrap:wrap;font-size:13px;color:#9ba5b5}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;transition:transform .15s,background .15s,box-shadow .15s;border:none;cursor:pointer;font-family:inherit;line-height:1}
+.btn-cta:hover{transform:translateY(-1px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.35)}
+.btn-wa:hover{background:var(--wa-dark)}
+.btn-form-hero{background:var(--accent);color:var(--primary);box-shadow:0 4px 16px rgba(201,169,97,.3)}
+.btn-form-hero:hover{background:#daba6f}
+.btn-cta svg{width:20px;height:20px;flex-shrink:0}
+.hero .small-note{font-size:13px;color:#9ba5b5;margin-top:18px}
+.hero .small-note strong{color:#fff}
+.hero .badges{display:flex;justify-content:center;gap:24px;margin-top:28px;flex-wrap:wrap;font-size:13px;color:#9ba5b5}
 .hero .badges span{display:flex;align-items:center;gap:6px}
 .hero .badges strong{color:#fff}
 .section{padding:50px 24px;max-width:1100px;margin:0 auto}
@@ -53,112 +61,355 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .form-wrap h2{margin-bottom:6px;font-size:24px;text-align:left}
 .form-wrap .sub{color:var(--text-soft);margin-bottom:24px;font-size:15px}
 .form-wrap .sub strong{color:var(--success)}
+.form-wa-shortcut{background:#E8F8EE;border:1px solid #b6e3c8;border-radius:10px;padding:16px 18px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.form-wa-shortcut .icon-wa{width:38px;height:38px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.form-wa-shortcut .icon-wa svg{width:22px;height:22px;fill:#fff}
+.form-wa-shortcut .txt{flex:1;min-width:180px;font-size:14px;color:var(--text);line-height:1.45}
+.form-wa-shortcut .txt b{color:var(--primary)}
+.form-wa-shortcut a{background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 16px;border-radius:6px;white-space:nowrap}
+.form-wa-shortcut a:hover{background:var(--wa-dark)}
 .field{margin-bottom:18px}
 label{display:block;font-weight:600;font-size:14px;color:var(--text);margin-bottom:6px}
 label .req{color:#c0392b}
+label .opt{color:var(--text-soft);font-weight:400;font-size:12px}
 input[type="text"],input[type="tel"],input[type="email"],select{width:100%;padding:13px 14px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:inherit;-webkit-appearance:none;appearance:none}
 input:focus,select:focus{outline:none;border-color:var(--primary)}
-select{background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
-button[type="submit"]{width:100%;padding:16px 20px;font-size:16px;font-weight:700;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;margin-top:6px}
+select{background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%3E%3Cpath%20fill%3D%22%23495057%22%20d%3D%22M6%208L0%200h12z%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+button[type="submit"]{width:100%;padding:16px 20px;font-size:16px;font-weight:700;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;transition:background .15s;margin-top:6px}
 button[type="submit"]:hover{background:var(--primary-light)}
 button[type="submit"]:disabled{background:#aab2c1;cursor:not-allowed}
 .privacy{text-align:center;font-size:12px;color:var(--text-soft);margin-top:12px}
-.result{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px 28px;text-align:center;max-width:600px;margin:40px auto}
+.result{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px 28px;text-align:center;max-width:600px;margin:40px auto;box-shadow:0 4px 16px rgba(10,37,64,.06)}
 .result h2{color:var(--primary);margin-bottom:14px;font-size:24px}
 .result p{color:var(--text-soft);margin-bottom:22px;font-size:16px}
 .result a.cta{display:inline-block;padding:16px 32px;background:var(--accent);color:var(--primary);border-radius:8px;text-decoration:none;font-weight:700;font-size:16px}
 .hidden{display:none}
 .depoimento{background:#fff8e7;border-radius:10px;padding:24px;margin:28px auto 0;max-width:600px;font-style:italic;color:var(--text);font-size:15px;line-height:1.7;border-left:4px solid var(--accent)}
-.depoimento .src{color:var(--text-soft);font-size:13px;padding:8px 0 0;text-align:right;font-style:normal;display:block}
+.depoimento footer{background:none;color:var(--text-soft);font-size:13px;padding:8px 0 0;text-align:right;font-style:normal}
 footer{background:var(--primary);color:#fff;padding:28px 24px;text-align:center;font-size:14px}
 footer a{color:#fff}
-@media (max-width:480px){.hero{padding:36px 18px 48px}.section{padding:36px 18px}.form-wrap{padding:28px 20px}}
+.fab-wa{position:fixed;bottom:18px;right:18px;width:56px;height:56px;background:var(--wa);border-radius:50%;display:none;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.4);z-index:1000;text-decoration:none;transition:transform .15s}
+.fab-wa:hover{transform:scale(1.06)}
+.fab-wa svg{width:30px;height:30px;fill:#fff}
+@media (max-width:780px){.fab-wa{display:flex}}
+@media (max-width:480px){.hero{padding:36px 18px 48px}.section{padding:36px 18px}.form-wrap{padding:28px 20px}.urgency-banner{font-size:13px}.cta-row .btn-cta{width:100%}.form-wa-shortcut{flex-direction:column;text-align:center;align-items:stretch}.form-wa-shortcut a{width:100%;text-align:center}}
 </style>
 </head>
 <body>
-<div class="urgency-banner">Atendo no máximo <strong>5 pré-diagnósticos por semana</strong> · Agenda nas próximas 48h</div>
-<nav class="nav"><div class="nav-wrap"><a href="/" class="logo">RGM<span>.</span> Consultoria</a><div class="trust">Atendendo PMEs desde 2014</div></div></nav>
+
+<div class="urgency-banner">
+  Atendo no máximo <strong>5 pré-diagnósticos por semana</strong> · Agenda nas próximas 48h
+</div>
+
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="/" class="logo">RGM<span>.</span> Consultoria</a>
+    <div class="trust">Atendendo PMEs desde 2014</div>
+  </div>
+</nav>
 <section class="hero">
-<div class="hero-wrap">
-<div class="tag">Pré-diagnóstico financeiro · 30 min · 100% Gratuito</div>
-<h1>Identifique em 30 minutos as <em>3 maiores dores financeiras</em> da sua empresa</h1>
-<p class="sub">Para PMEs faturando R$ 1M a R$ 10M/ano. Você sai com plano de ação imediato — mesmo se não nos contratar depois.</p>
-<a href="#form" class="cta-btn">Quero meu pré-diagnóstico agora</a>
-<div class="small-note">Sem custo · Sem cartão · Sem compromisso</div>
-<div class="badges"><span>⏱ <strong>30 min</strong> em vídeo</span><span>📊 <strong>3 dores</strong> identificadas</span><span>🎯 <strong>Plano de ação</strong> imediato</span></div>
-</div></section>
-<section class="section">
-<h2>Você se identifica com alguma dessas dores?</h2>
-<div class="dores">
-<div class="dor-card"><div class="icon">💸</div><h3>Fluxo de caixa fora de controle</h3><p>Fecha o mês sem saber se sobrou ou faltou. Decide investimento "no feeling". Paga conta atrasada por desorganização, não por falta de dinheiro.</p></div>
-<div class="dor-card"><div class="icon">📊</div><h3>Falta de visão e governança</h3><p>Sem DRE gerencial confiável. Margem por produto é mistério. Quando precisa de número rápido pra banco ou investidor, vira correria.</p></div>
-<div class="dor-card"><div class="icon">🏦</div><h3>Crédito caro ou inacessível</h3><p>Banco oferece capital de giro a 4%+ am. Você sabe que existe estrutura mais barata (FIDC, CRA, antecipação), mas não sabe acessar.</p></div>
-<div class="dor-card"><div class="icon">⏰</div><h3>Sobrecarga do sócio</h3><p>15-30h/semana suas em rotina financeira que outra pessoa deveria fazer. Vendas, equipe e estratégia ficam pra depois.</p></div>
-</div>
-<div class="depoimento">"Reduzi R$ 32k de juros bancários em 90 dias depois da consultoria. O pré-diagnóstico já me deu 3 ações práticas pra implementar sozinho — paguei o investimento no primeiro mês."<span class="src">— Sócio de indústria, R$ 4,8M faturamento, SP</span></div>
+  <div class="hero-wrap">
+    <div class="tag">Pré-diagnóstico financeiro · 30 min · 100% Gratuito</div>
+    <h1>Identifique em 30 minutos as <em>3 maiores dores financeiras</em> da sua empresa</h1>
+    <p class="sub">Para PMEs faturando R$ 1M a R$ 10M/ano. Você sai com plano de ação imediato — mesmo se não nos contratar depois.</p>
+
+    <div class="cta-row">
+      <a id="btn-wa-hero"
+         href="https://wa.me/5513996795045?text=Ol%C3%A1%20Rafael%2C%20vi%20sua%20p%C3%A1gina%20de%20pr%C3%A9-diagn%C3%B3stico%20e%20quero%20entender%20melhor%20pra%20minha%20empresa."
+         class="btn-cta btn-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.2 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 1.9 7.8 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zM16 28.7c-2.5 0-5-.7-7.1-2l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.2-4.7-2.2-7.4 0-7.4 6-13.4 13.5-13.4 7.4 0 13.5 6 13.5 13.4S23.4 28.7 16 28.7zm7.4-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-2.4-1.2-4-2.1-5.6-4.7-.4-.7.4-.6 1.2-2.1.1-.3 0-.5-.1-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.6-.9-.7h-.7c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 2.6 1.1 3.6 1.2 4.9 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+        Falar agora no WhatsApp
+      </a>
+      <a href="#form" class="btn-cta btn-form-hero">Preencher o formulário</a>
+    </div>
+    <div class="small-note">Atendimento <strong>humano</strong> · direto comigo · sem bot, sem fila</div>
+
+    <div class="badges">
+      <span>⏱ <strong>30 min</strong> em vídeo</span>
+      <span>📊 <strong>3 dores</strong> identificadas</span>
+      <span>🎯 <strong>Plano de ação</strong> imediato</span>
+    </div>
+  </div>
 </section>
+
 <section class="section">
-<div class="como-funciona">
-<h2 style="margin-bottom:32px">Como funciona</h2>
-<div class="passos">
-<div class="passo"><div class="num">1</div><h4>Preenche em 60 segundos</h4><p>5 campos. Você responde, eu chego preparado pra conversar.</p></div>
-<div class="passo"><div class="num">2</div><h4>Conversa de 30 min em vídeo</h4><p>Eu pergunto, você responde. Framework próprio mapeia dores rapidamente.</p></div>
-<div class="passo"><div class="num">3</div><h4>Você sai com plano de ação</h4><p>3 dores prioritárias + ação concreta pra cada uma. Decide depois.</p></div>
-</div>
-</div>
+  <h2>Você se identifica com alguma dessas dores?</h2>
+  <div class="dores">
+    <div class="dor-card">
+      <div class="icon">💸</div>
+      <h3>Fluxo de caixa fora de controle</h3>
+      <p>Fecha o mês sem saber se sobrou ou faltou. Decide investimento "no feeling". Paga conta atrasada por desorganização, não por falta de dinheiro.</p>
+    </div>
+    <div class="dor-card">
+      <div class="icon">📊</div>
+      <h3>Falta de visão e governança</h3>
+      <p>Sem DRE gerencial confiável. Margem por produto é mistério. Quando precisa de número rápido pra banco ou investidor, vira correria.</p>
+    </div>
+    <div class="dor-card">
+      <div class="icon">🏦</div>
+      <h3>Crédito caro ou inacessível</h3>
+      <p>Banco oferece capital de giro a 4%+ am. Você sabe que existe estrutura mais barata (FIDC, CRA, antecipação), mas não sabe acessar.</p>
+    </div>
+    <div class="dor-card">
+      <div class="icon">⏰</div>
+      <h3>Sobrecarga do sócio</h3>
+      <p>15-30h/semana suas em rotina financeira que outra pessoa deveria fazer. Vendas, equipe e estratégia ficam pra depois.</p>
+    </div>
+  </div>
+
+  <div class="depoimento">
+    "Reduzi R$ 32k de juros bancários em 90 dias depois da consultoria. O pré-diagnóstico já me deu 3 ações práticas pra implementar sozinho — paguei o investimento no primeiro mês."
+    <footer>— Sócio de indústria, R$ 4,8M faturamento, SP</footer>
+  </div>
 </section>
+
 <section class="section">
-<div id="form" class="form-wrap">
-<h2>Solicitar pré-diagnóstico</h2>
-<p class="sub">Confirmo em <strong>até 2h úteis</strong> com horários disponíveis. Apenas 5 vagas por semana.</p>
-<form id="pre-diag-form" novalidate>
-<div class="field"><label for="empresa">Empresa <span class="req">*</span></label><input type="text" id="empresa" name="empresa" required autocomplete="organization"></div>
-<div class="field"><label for="nome">Seu nome <span class="req">*</span></label><input type="text" id="nome" name="nome" required autocomplete="name"></div>
-<div class="field"><label for="faturamento">Faturamento anual <span class="req">*</span></label><select id="faturamento" name="faturamento" required><option value="">Selecione...</option><option value="lt_1m">Menos de R$ 1 milhão</option><option value="1_3m">R$ 1M a R$ 3M</option><option value="3_6m">R$ 3M a R$ 6M</option><option value="6_10m">R$ 6M a R$ 10M</option><option value="gt_10m">Mais de R$ 10M</option></select></div>
-<div class="field"><label for="whatsapp">WhatsApp <span class="req">*</span></label><input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel"></div>
-<div class="field"><label for="email">E-mail <span class="req">*</span></label><input type="email" id="email" name="email" required autocomplete="email"></div>
-<button type="submit" id="submit-btn">Solicitar meu pré-diagnóstico</button>
-<p class="privacy">Seus dados são confidenciais. Não compartilhamos.</p>
-</form>
-</div>
-<div id="success-qualified" class="result hidden"><h2>Perfeito. Vamos conversar.</h2><p>Escolha o melhor horário no calendário. Confirmação chega por email e WhatsApp.</p><a href="https://calendly.com/rafael-moreira-rgmoreiraconsultoria/30min" class="cta" id="calendly-link">Escolher horário</a></div>
-<div id="success-nurture" class="result hidden"><h2>Recebi seu cadastro.</h2><p>Vou avaliar e te chamar no WhatsApp em até 24h. Se urgente: <strong>(13) 99679-5045</strong>.</p></div>
-<div id="error-screen" class="result hidden"><h2>Tivemos um problema.</h2><p>Me chame no WhatsApp: <strong>(13) 99679-5045</strong>.</p><a href="javascript:location.reload()" class="cta">Tentar de novo</a></div>
+  <div class="como-funciona">
+    <h2 style="margin-bottom:32px">Como funciona</h2>
+    <div class="passos">
+      <div class="passo">
+        <div class="num">1</div>
+        <h4>Conversa no WhatsApp (ou form)</h4>
+        <p>Escolha o canal que preferir. No WhatsApp eu já faço perguntas-chave. No form, você adianta 4 dados e eu chego preparado.</p>
+      </div>
+      <div class="passo">
+        <div class="num">2</div>
+        <h4>Sessão de 30 min em vídeo</h4>
+        <p>Eu pergunto, você responde. Framework próprio mapeia frequência das dores em pouco tempo.</p>
+      </div>
+      <div class="passo">
+        <div class="num">3</div>
+        <h4>Você sai com plano de ação</h4>
+        <p>3 dores prioritárias + ação concreta pra cada uma. Implementa sozinho ou contrata. Decide depois.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<footer><p>RGM Consultoria · CFO as a Service · BPO Financeiro · Consultoria · <a href="https://rgmoreiraconsultoria.com.br">rgmoreiraconsultoria.com.br</a></p></footer>
+
+<section class="section">
+  <div id="form" class="form-wrap">
+    <h2>Solicitar pré-diagnóstico</h2>
+    <p class="sub">Confirmo em <strong>até 2h úteis</strong> com horários disponíveis. Apenas 5 vagas por semana.</p>
+
+    <div class="form-wa-shortcut">
+      <div class="icon-wa">
+        <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.2 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 1.9 7.8 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zM16 28.7c-2.5 0-5-.7-7.1-2l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.2-4.7-2.2-7.4 0-7.4 6-13.4 13.5-13.4 7.4 0 13.5 6 13.5 13.4S23.4 28.7 16 28.7zm7.4-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-2.4-1.2-4-2.1-5.6-4.7-.4-.7.4-.6 1.2-2.1.1-.3 0-.5-.1-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.6-.9-.7h-.7c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 2.6 1.1 3.6 1.2 4.9 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+      </div>
+      <div class="txt"><b>Prefere falar agora?</b><br>Te respondo em minutos, sem formulário.</div>
+      <a id="btn-wa-form" href="https://wa.me/5513996795045?text=Ol%C3%A1%20Rafael%2C%20vi%20sua%20p%C3%A1gina%20de%20pr%C3%A9-diagn%C3%B3stico%20e%20quero%20entender%20melhor%20pra%20minha%20empresa." target="_blank" rel="noopener">Abrir WhatsApp</a>
+    </div>
+
+    <form id="pre-diag-form" novalidate>
+      <div class="field">
+        <label for="empresa">Empresa <span class="req">*</span></label>
+        <input type="text" id="empresa" name="empresa" required autocomplete="organization">
+      </div>
+
+      <div class="field">
+        <label for="nome">Seu nome <span class="req">*</span></label>
+        <input type="text" id="nome" name="nome" required autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label for="email">E-mail <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label for="faturamento">Faturamento anual <span class="opt">(opcional — me ajuda a chegar preparado)</span></label>
+        <select id="faturamento" name="faturamento">
+          <option value="">Prefiro contar no contato</option>
+          <option value="lt_1m">Menos de R$ 1 milhão</option>
+          <option value="1_3m">R$ 1M a R$ 3M</option>
+          <option value="3_6m">R$ 3M a R$ 6M</option>
+          <option value="6_10m">R$ 6M a R$ 10M</option>
+          <option value="gt_10m">Mais de R$ 10M</option>
+        </select>
+      </div>
+
+      <button type="submit" id="submit-btn">Solicitar meu pré-diagnóstico</button>
+      <p class="privacy">Seus dados são confidenciais. Não compartilhamos.</p>
+    </form>
+  </div>
+
+  <div id="success-qualified" class="result hidden">
+    <h2>Perfeito. Vamos conversar.</h2>
+    <p>Escolha o melhor horário no calendário. Confirmação chega por email e WhatsApp em segundos.</p>
+    <a href="https://calendly.com/rafael-moreira-rgmoreiraconsultoria/30min" class="cta" id="calendly-link">Escolher horário</a>
+  </div>
+
+  <div id="success-nurture" class="result hidden">
+    <h2>Recebi seu cadastro.</h2>
+    <p>Vou avaliar e te chamar no WhatsApp em até 24h pra alinhar próximos passos. Se urgente, me chame direto: <strong>(13) 99679-5045</strong>.</p>
+  </div>
+
+  <div id="error-screen" class="result hidden">
+    <h2>Tivemos um problema técnico.</h2>
+    <p>Me chame direto no WhatsApp: <strong>(13) 99679-5045</strong> — respondo em minutos.</p>
+    <a href="javascript:location.reload()" class="cta">Tentar de novo</a>
+  </div>
+</section>
+
+<footer>
+  <p>RGM Consultoria · CFO as a Service · BPO Financeiro · Consultoria · <a href="https://rgmoreiraconsultoria.com.br">rgmoreiraconsultoria.com.br</a></p>
+</footer>
+
+<a id="fab-wa"
+   class="fab-wa"
+   href="https://wa.me/5513996795045?text=Ol%C3%A1%20Rafael%2C%20vi%20sua%20p%C3%A1gina%20de%20pr%C3%A9-diagn%C3%B3stico%20e%20quero%20entender%20melhor%20pra%20minha%20empresa."
+   target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.2 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 1.9 7.8 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zM16 28.7c-2.5 0-5-.7-7.1-2l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.2-4.7-2.2-7.4 0-7.4 6-13.4 13.5-13.4 7.4 0 13.5 6 13.5 13.4S23.4 28.7 16 28.7zm7.4-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-2.4-1.2-4-2.1-5.6-4.7-.4-.7.4-.6 1.2-2.1.1-.3 0-.5-.1-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.6-.9-.7h-.7c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 2.6 1.1 3.6 1.2 4.9 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
 <script>
 const WEBHOOK_URL='https://rgmoreiraconsultoria.app.n8n.cloud/webhook/qualifica';
 const waInput=document.getElementById('whatsapp');
 waInput.addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5}).*/,'($1) $2');else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');e.target.value=v;});
+
+// ========= WhatsApp click → GA4 generate_lead =========
+function fireWaLead(source){
+  if(typeof gtag==='undefined') return;
+  gtag('event','generate_lead',{
+    'value':50,
+    'currency':'BRL',
+    'lead_status':'wa_inbound',
+    'method':source,
+    'origem':'pre-diagnostico'
+  });
+}
+document.getElementById('btn-wa-hero').addEventListener('click',()=>fireWaLead('whatsapp_hero'));
+document.getElementById('btn-wa-form').addEventListener('click',()=>fireWaLead('whatsapp_form_shortcut'));
+document.getElementById('fab-wa').addEventListener('click',()=>fireWaLead('whatsapp_fab'));
+
+// ========= Form submit =========
 document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
-e.preventDefault();
-const btn=document.getElementById('submit-btn');
-btn.disabled=true;btn.textContent='Enviando...';
-const fd=new FormData(e.target);
-const data=Object.fromEntries(fd.entries());
-data.whatsapp_limpo=data.whatsapp.replace(/\D/g,'');
-data.timestamp=new Date().toISOString();
-data.url=window.location.href;
-data.referrer=document.referrer||'';
-const params=new URLSearchParams(window.location.search);
-data.utm_source=params.get('utm_source')||'organic';
-data.utm_campaign=params.get('utm_campaign')||'';
-data.utm_medium=params.get('utm_medium')||'';
-data.gclid=params.get('gclid')||'';
-const faturamentoIcp=['1_3m','3_6m','6_10m','gt_10m'].includes(data.faturamento);
-const qualificado=faturamentoIcp;
-data.qualificado=qualificado;
-data.cargo='nao_informado';
-data.dor='a_descobrir';
-data.origem_landing='pre-diagnostico';
-if(typeof gtag!=='undefined'){gtag('event','generate_lead',{'value':qualificado?100:0,'currency':'BRL','lead_status':qualificado?'qualificado':'frio','faturamento':data.faturamento,'origem':'pre-diagnostico','utm_campaign':data.utm_campaign});}
-try{
-await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),mode:'cors'});
-document.getElementById('form').classList.add('hidden');
-if(qualificado){document.getElementById('success-qualified').classList.remove('hidden');const cal=document.getElementById('calendly-link');const calParams=new URLSearchParams({name:data.nome,email:data.email,a1:data.empresa});cal.href=cal.href+'?'+calParams.toString();}else{document.getElementById('success-nurture').classList.remove('hidden');}
-window.scrollTo({top:0,behavior:'smooth'});
-}catch(err){document.getElementById('form').classList.add('hidden');document.getElementById('error-screen').classList.remove('hidden');}
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  const fd=new FormData(e.target);
+  const data=Object.fromEntries(fd.entries());
+  data.whatsapp_limpo=data.whatsapp.replace(/\D/g,'');
+  data.timestamp=new Date().toISOString();
+  data.url=window.location.href;
+  data.referrer=document.referrer||'';
+  const params=new URLSearchParams(window.location.search);
+  data.utm_source=params.get('utm_source')||'organic';
+  data.utm_campaign=params.get('utm_campaign')||'';
+  data.utm_medium=params.get('utm_medium')||'';
+  data.gclid=params.get('gclid')||'';
+
+  // Faturamento agora é opcional. Qualifica se informado ICP; se vazio, manda pra nurture leve.
+  const faturamentoIcp=['1_3m','3_6m','6_10m','gt_10m'].includes(data.faturamento);
+  const faturamentoNaoInformado=!data.faturamento;
+  const qualificado=faturamentoIcp || faturamentoNaoInformado;
+  data.qualificado=qualificado;
+  data.cargo='nao_informado';
+  data.dor='a_descobrir';
+  data.origem_landing='pre-diagnostico';
+
+  if(typeof gtag!=='undefined'){
+    gtag('event','generate_lead',{
+      'value':qualificado?100:0,
+      'currency':'BRL',
+      'lead_status':qualificado?'qualificado':'frio',
+      'method':'form',
+      'faturamento':data.faturamento||'nao_informado',
+      'origem':'pre-diagnostico',
+      'utm_campaign':data.utm_campaign
+    });
+  }
+
+  try{
+    await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),mode:'cors'});
+    document.getElementById('form').classList.add('hidden');
+    if(qualificado){
+      document.getElementById('success-qualified').classList.remove('hidden');
+      const cal=document.getElementById('calendly-link');
+      const calParams=new URLSearchParams({name:data.nome,email:data.email,a1:data.empresa});
+      cal.href=cal.href+'?'+calParams.toString();
+    }else{
+      document.getElementById('success-nurture').classList.remove('hidden');
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){
+    document.getElementById('form').classList.add('hidden');
+    document.getElementById('error-screen').classList.remove('hidden');
+  }
 });
 </script>
 </body>
 </html>
+<script>
+const WEBHOOK_URL='https://rgmoreiraconsultoria.app.n8n.cloud/webhook/qualifica';
+const waInput=document.getElementById('whatsapp');
+waInput.addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5}).*/,'($1) $2');else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');e.target.value=v;});
+
+function fireWaLead(source){
+  if(typeof gtag==='undefined') return;
+  gtag('event','generate_lead',{'value':50,'currency':'BRL','lead_status':'wa_inbound','method':source,'origem':'pre-diagnostico'});
+}
+document.getElementById('btn-wa-hero').addEventListener('click',()=>fireWaLead('whatsapp_hero'));
+document.getElementById('btn-wa-form').addEventListener('click',()=>fireWaLead('whatsapp_form_shortcut'));
+document.getElementById('fab-wa').addEventListener('click',()=>fireWaLead('whatsapp_fab'));
+
+document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  const fd=new FormData(e.target);
+  const data=Object.fromEntries(fd.entries());
+  data.whatsapp_limpo=data.whatsapp.replace(/\D/g,'');
+  data.timestamp=new Date().toISOString();
+  data.url=window.location.href;
+  data.referrer=document.referrer||'';
+  const params=new URLSearchParams(window.location.search);
+  data.utm_source=params.get('utm_source')||'organic';
+  data.utm_campaign=params.get('utm_campaign')||'';
+  data.utm_medium=params.get('utm_medium')||'';
+  data.gclid=params.get('gclid')||'';
+
+  const faturamentoIcp=['1_3m','3_6m','6_10m','gt_10m'].includes(data.faturamento);
+  const faturamentoNaoInformado=!data.faturamento;
+  const qualificado=faturamentoIcp || faturamentoNaoInformado;
+  data.qualificado=qualificado;
+  data.cargo='nao_informado';
+  data.dor='a_descobrir';
+  data.origem_landing='pre-diagnostico';
+
+  if(typeof gtag!=='undefined'){
+    gtag('event','generate_lead',{
+      'value':qualificado?100:0,
+      'currency':'BRL',
+      'lead_status':qualificado?'qualificado':'frio',
+      'method':'form',
+      'faturamento':data.faturamento||'nao_informado',
+      'origem':'pre-diagnostico',
+      'utm_campaign':data.utm_campaign
+    });
+  }
+
+  try{
+    await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),mode:'cors'});
+    document.getElementById('form').classList.add('hidden');
+    if(qualificado){
+      document.getElementById('success-qualified').classList.remove('hidden');
+      const cal=document.getElementById('calendly-link');
+      const calParams=new URLSearchParams({name:data.nome,email:data.email,a1:data.empresa});
+      cal.href=cal.href+'?'+calParams.toString();
+    }else{
+      document.getElementById('success-nurture').classList.remove('hidden');
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){
+    document.getElementById('form').classList.add('hidden');
+    document.getElementById('error-screen').classList.remove('hidden');
+  }
+});
+</script>
+</body>
+  </html>
