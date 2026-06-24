@@ -107,6 +107,7 @@ footer a{color:#fff}
     <div class="trust">Atendendo PMEs desde 2014</div>
   </div>
 </nav>
+
 <section class="hero">
   <div class="hero-wrap">
     <div class="tag">Pré-diagnóstico financeiro · 30 min · 100% Gratuito</div>
@@ -266,27 +267,21 @@ footer a{color:#fff}
   <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.2 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 1.9 7.8 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zM16 28.7c-2.5 0-5-.7-7.1-2l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.4-2.2-2.2-4.7-2.2-7.4 0-7.4 6-13.4 13.5-13.4 7.4 0 13.5 6 13.5 13.4S23.4 28.7 16 28.7zm7.4-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-2.4-1.2-4-2.1-5.6-4.7-.4-.7.4-.6 1.2-2.1.1-.3 0-.5-.1-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.6-.9-.7h-.7c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4 0 2 1.5 3.9 1.7 4.2.2.3 2.9 4.4 7 6.2 2.6 1.1 3.6 1.2 4.9 1 .8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
 </a>
 
+
 <script>
 const WEBHOOK_URL='https://rgmoreiraconsultoria.app.n8n.cloud/webhook/qualifica';
 const waInput=document.getElementById('whatsapp');
 waInput.addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5}).*/,'($1) $2');else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');e.target.value=v;});
 
-// ========= WhatsApp click → GA4 generate_lead =========
 function fireWaLead(source){
   if(typeof gtag==='undefined') return;
-  gtag('event','generate_lead',{
-    'value':50,
-    'currency':'BRL',
-    'lead_status':'wa_inbound',
-    'method':source,
-    'origem':'pre-diagnostico'
-  });
+  gtag('event','generate_lead',{'value':50,'currency':'BRL','lead_status':'wa_inbound','method':source,'origem':'pre-diagnostico'});
+  gtag('event','conversion',{'send_to':'AW-18241581691/SOOsCLvo9sAcEPvkofpD','value':50,'currency':'BRL'});
 }
 document.getElementById('btn-wa-hero').addEventListener('click',()=>fireWaLead('whatsapp_hero'));
 document.getElementById('btn-wa-form').addEventListener('click',()=>fireWaLead('whatsapp_form_shortcut'));
 document.getElementById('fab-wa').addEventListener('click',()=>fireWaLead('whatsapp_fab'));
 
-// ========= Form submit =========
 document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
   e.preventDefault();
   const btn=document.getElementById('submit-btn');
@@ -303,7 +298,6 @@ document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
   data.utm_medium=params.get('utm_medium')||'';
   data.gclid=params.get('gclid')||'';
 
-  // Faturamento agora é opcional. Qualifica se informado ICP; se vazio, manda pra nurture leve.
   const faturamentoIcp=['1_3m','3_6m','6_10m','gt_10m'].includes(data.faturamento);
   const faturamentoNaoInformado=!data.faturamento;
   const qualificado=faturamentoIcp || faturamentoNaoInformado;
@@ -313,15 +307,8 @@ document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
   data.origem_landing='pre-diagnostico';
 
   if(typeof gtag!=='undefined'){
-    gtag('event','generate_lead',{
-      'value':qualificado?100:0,
-      'currency':'BRL',
-      'lead_status':qualificado?'qualificado':'frio',
-      'method':'form',
-      'faturamento':data.faturamento||'nao_informado',
-      'origem':'pre-diagnostico',
-      'utm_campaign':data.utm_campaign
-    });
+    gtag('event','generate_lead',{'value':qualificado?100:0,'currency':'BRL','lead_status':qualificado?'qualificado':'frio','method':'form','faturamento':data.faturamento||'nao_informado','origem':'pre-diagnostico','utm_campaign':data.utm_campaign});
+    gtag('event','conversion',{'send_to':'AW-18241581691/SOOsCLvo9sAcEPvkofpD','value':qualificado?100:0,'currency':'BRL'});
   }
 
   try{
@@ -344,72 +331,3 @@ document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
 </script>
 </body>
 </html>
-<script>
-const WEBHOOK_URL='https://rgmoreiraconsultoria.app.n8n.cloud/webhook/qualifica';
-const waInput=document.getElementById('whatsapp');
-waInput.addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5}).*/,'($1) $2');else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');e.target.value=v;});
-
-function fireWaLead(source){
-  if(typeof gtag==='undefined') return;
-  gtag('event','generate_lead',{'value':50,'currency':'BRL','lead_status':'wa_inbound','method':source,'origem':'pre-diagnostico'});
-}
-document.getElementById('btn-wa-hero').addEventListener('click',()=>fireWaLead('whatsapp_hero'));
-document.getElementById('btn-wa-form').addEventListener('click',()=>fireWaLead('whatsapp_form_shortcut'));
-document.getElementById('fab-wa').addEventListener('click',()=>fireWaLead('whatsapp_fab'));
-
-document.getElementById('pre-diag-form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Enviando...';
-  const fd=new FormData(e.target);
-  const data=Object.fromEntries(fd.entries());
-  data.whatsapp_limpo=data.whatsapp.replace(/\D/g,'');
-  data.timestamp=new Date().toISOString();
-  data.url=window.location.href;
-  data.referrer=document.referrer||'';
-  const params=new URLSearchParams(window.location.search);
-  data.utm_source=params.get('utm_source')||'organic';
-  data.utm_campaign=params.get('utm_campaign')||'';
-  data.utm_medium=params.get('utm_medium')||'';
-  data.gclid=params.get('gclid')||'';
-
-  const faturamentoIcp=['1_3m','3_6m','6_10m','gt_10m'].includes(data.faturamento);
-  const faturamentoNaoInformado=!data.faturamento;
-  const qualificado=faturamentoIcp || faturamentoNaoInformado;
-  data.qualificado=qualificado;
-  data.cargo='nao_informado';
-  data.dor='a_descobrir';
-  data.origem_landing='pre-diagnostico';
-
-  if(typeof gtag!=='undefined'){
-    gtag('event','generate_lead',{
-      'value':qualificado?100:0,
-      'currency':'BRL',
-      'lead_status':qualificado?'qualificado':'frio',
-      'method':'form',
-      'faturamento':data.faturamento||'nao_informado',
-      'origem':'pre-diagnostico',
-      'utm_campaign':data.utm_campaign
-    });
-  }
-
-  try{
-    await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),mode:'cors'});
-    document.getElementById('form').classList.add('hidden');
-    if(qualificado){
-      document.getElementById('success-qualified').classList.remove('hidden');
-      const cal=document.getElementById('calendly-link');
-      const calParams=new URLSearchParams({name:data.nome,email:data.email,a1:data.empresa});
-      cal.href=cal.href+'?'+calParams.toString();
-    }else{
-      document.getElementById('success-nurture').classList.remove('hidden');
-    }
-    window.scrollTo({top:0,behavior:'smooth'});
-  }catch(err){
-    document.getElementById('form').classList.add('hidden');
-    document.getElementById('error-screen').classList.remove('hidden');
-  }
-});
-</script>
-</body>
-  </html>
